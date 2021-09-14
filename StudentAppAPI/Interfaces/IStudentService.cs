@@ -7,5 +7,6 @@ namespace StudentAppAPI.Interfaces
     public interface IStudentService
     {
         Task<IEnumerable<Student>> GetAllStudents();
+        Task<IEnumerable<StudentInfo>> GetAllStudentsFormatted();
     }
 }

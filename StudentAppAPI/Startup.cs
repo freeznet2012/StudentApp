@@ -40,6 +40,7 @@ namespace StudentAppAPI
 
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentAppAPI", Version = "v1" });
@@ -56,9 +57,11 @@ namespace StudentAppAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StudentAppAPI v1"));
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()); // temp  AllowAnyOrigin. Need to specify origin later
 
             // app.UseAuthorization();
 

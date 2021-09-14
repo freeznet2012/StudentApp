@@ -7,7 +7,7 @@ using StudentAppAPI.Interfaces;
 namespace StudentAppAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _service;
@@ -16,10 +16,16 @@ namespace StudentAppAPI.Controllers
             _service = service;
         }
 
-        [HttpGet()]
+        [HttpGet("Test")]
         public async Task<ActionResult<IEnumerable<Student>>> GetAllStudents()
         {
             return Ok(await _service.GetAllStudents());
+        }
+
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<Student>>> GetAllStudentsFormatted()
+        {
+            return Ok(await _service.GetAllStudentsFormatted());
         }
     }
 }

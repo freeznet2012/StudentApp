@@ -1,0 +1,38 @@
+<table class="table table-dark">
+    <tr>
+        <th>StudentID</th>
+        <th>EC1</th>
+        <th>EC2</th>
+        <th>EC3</th>
+        <th>EC4</th>
+        <th>EC5</th>
+        <th *ngIf="showResultsOfAll">Result</th>
+        <th>Total</th>
+    </tr>
+
+    <tr *ngFor="let student of students">
+        <td>{{student.name}}</td>
+        <ng-container *ngIf="!showMarksAfterGrace">
+            <td *ngFor="let mark of student.marks;let i=index;">
+                {{mark}}
+            </td>
+        </ng-container>
+
+        <ng-container *ngIf="showMarksAfterGrace">
+            <td *ngFor="let mark of student.marksAfterGrace;let i=index;">
+                {{mark}}
+            </td>
+        </ng-container>
+
+        <td *ngIf="showResultsOfAll">
+            {{(showMarksAfterGrace ? student.resultAfterGrace : student.result) ? 'Pass' : 'Fail'}}
+        </td>
+        <td>
+            {{student.total}}
+        </td>
+    </tr>
+</table>
+<button class="btn btn-primary" (click)="showResultsOfAll = !showResultsOfAll">{{showResultsOfAll ? 'Hide' : 'Show'}}
+    Results of All</button>
+<button class="btn btn-secondary" (click)="showMarksAfterGrace = !showMarksAfterGrace">{{showMarksAfterGrace ? 'Hide' :
+    'Show'}} Results with Grace Marks</button>

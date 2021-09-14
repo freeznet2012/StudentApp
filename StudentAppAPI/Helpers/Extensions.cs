@@ -10,7 +10,7 @@ namespace StudentAppAPI.Helpers
                         StudentName = student.FStudentName,
                         StudentID = (int)student.FStudentId,
                         Subject = student.FSubject,
-                        Marks = (float)student.FMarks,
+                        Marks = (int)student.FMarks,
                     };
     }
 
