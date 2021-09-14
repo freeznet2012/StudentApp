@@ -34,5 +34,5 @@
 </table>
 <button class="btn btn-primary" (click)="showResultsOfAll = !showResultsOfAll">{{showResultsOfAll ? 'Hide' : 'Show'}}
     Results of All</button>
-<button class="btn btn-secondary" (click)="showMarksAfterGrace = !showMarksAfterGrace">{{showMarksAfterGrace ? 'Hide' :
+<button class="btn btn-secondary" *ngIf="showResultsOfAll" (click)="showMarksAfterGrace = !showMarksAfterGrace">{{showMarksAfterGrace ? 'Hide' :
     'Show'}} Results with Grace Marks</button>
